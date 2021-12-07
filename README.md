@@ -29,13 +29,13 @@ after you clone this project there is a class call Ex1 main run it in input.txt:
         P(J=T|B=T) A-E-M
         P(J=T|B=T) M-E-A
 
-output:
-yes
-no
-0.28417,7,16
-0.28417,7,16
-0.84902,7,12
-0.84902,5,8
+        output:
+        yes
+        no
+        0.28417,7,16
+        0.28417,7,16
+        0.84902,7,12
+        0.84902,5,8
 
  
 
