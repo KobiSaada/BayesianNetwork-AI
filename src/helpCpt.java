@@ -90,53 +90,9 @@ public class helpCpt {
         }
     }
 
-    /**
-     * Return the descendent of the given Entry identified by the given
-     * sequence of values, starting from the given index.
-     * @throws NoSuchElementException if the values don't represent a path to a Entry.
-     */
-    protected ProbabilityValue find(Entry entry, helper.Assignment assignment) throws NoSuchElementException {
-        if (entry == null) {
-            throw new NoSuchElementException();
-        } else if (entry instanceof ProbabilityValue) {
-            return (ProbabilityValue)entry;
-        } else {
-            Dimension dimen = (Dimension)entry;
-            NodeBayes var = dimen.variable;
-            Object value = assignment.get(var);
-            if (value == null) {
-                throw new NoSuchElementException();
-            } else {
-                entry = dimen.entries.get(value);
-                if (entry == null) {
-                    throw new NoSuchElementException();
-                } else {
-                    return find(entry, assignment);
-                }
-            }
-        }
-    }
-
-
-    public void set(helper.Assignment e, String p) {
-        ProbabilityValue pv = find(root, e);
-        if (pv != null) {
-            pv.value = p;
-        } else {
-            throw new NoSuchElementException();
-        }
-    }
 
    
-    public String get(helper.Assignment e) throws NoSuchElementException {
-        ProbabilityValue pv = find(root, e);
-        if (pv != null) {
-            return pv.value;
-        } else {
-            throw new NoSuchElementException();
-        }
-    }
-
+  
  
     public Iterator<ProbabilityValue> valueIterator() {
         final Stack<Entry> stack = new Stack<Entry>();
