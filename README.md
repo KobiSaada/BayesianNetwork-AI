@@ -16,24 +16,23 @@ Variable elimination (VE) is a simple and general exact inference algorithm in p
 <img width="1192" alt="Screen Shot 2021-12-07 at 21 55 59" src="https://user-images.githubusercontent.com/73976733/145097228-59ee020c-94a3-47c6-be61-26bd1d95197f.png">
 # Example: :page_facing_up:
 
- after you clone this project there is a class call Ex3 main run it in check(0):
- 
-        g = DiGraph()  # creates an empty directed graph
-    for n in range(4):
-        g.add_node(n)
-    g.add_edge(0, 1, 1)
-    g.add_edge(1, 0, 1.1)
+ after you clone this project there is a class call Ex1 main run it in input.txt:
+ input.txt:
+alarm_net.xml
+B-E|//Bayesball
+B-E|J=T
+P(B=T|J=T,M=T) A-E//VE
+P(B=T|J=T,M=T) E-A
+P(J=T|B=T) A-E-M
+P(J=T|B=T) M-E-A
 
-    g.add_edge(1, 2, 1.3)
-    g.add_edge(2, 3, 1.1)
-    g.add_edge(1, 3, 1.9)
-    g.remove_edge(1, 3)
-    g.add_edge(1, 3, 10)
-    print(g)  # prints the __repr__ (func output)
-    print(g.get_all_v())  # prints a dict with all the graph's vertices.
-    print(g.all_in_edges_of_node(1))
-    print(g.all_out_edges_of_node(1))
-    g_algo = GraphAlgo(g)
-    print(g_algo.shortest_path(0, 3))
-    g_algo.plot_graph()
+output:
+yes
+no
+0.28417,7,16
+0.28417,7,16
+0.84902,7,12
+0.84902,5,8
+
  
+# Enjoy :grin:
