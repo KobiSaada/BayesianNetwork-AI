@@ -5,17 +5,12 @@ import java.util.*;
 
 public class helpCpt {
 
-    /**
-     * Parent class of entries in a CPT.
-     */
+ 
     abstract public class Entry {
         abstract public void print(PrintWriter out, String prefix);
     }
 
-    /**
-     * Each dimension of a CPT corresponds to a RandomVariable and
-     * contains a set of Entries, one for each value of the variable.
-     */
+    
     public class Dimension extends Entry {
         public NodeBayes variable;
        public String[] nameOfN;//the name
@@ -66,25 +61,11 @@ public class helpCpt {
      */
     protected Entry root;
 
-    /**
-     * Construct and return a new CPT representing the possible combinations
-     * of values of the given query and <q>given</q> RandomVariables.
-     * This CPT is <q>empty</q> in the sense of having no probability
-     * values at the leaves.
-     */
+
     public helpCpt(NodeBayes query, List<NodeBayes> givens) {
         root = init(query, givens, 0);
     }
 
-    /**
-     * Returns an Entry for the index'th given variable (if index &lt;
-     * number of givens, in which case the sub-entries are created
-     * recursively), and otherwise are ProbabilityValues storing the
-     * values of the query variable. The result is a <q>tree</q> whose
-     * levels enumerate the values of the given variables in order,
-     * followed by values of the query variables, as described in the
-     * comment for the CPT class.
-     */
     protected Entry init(NodeBayes query, List<NodeBayes> givens, int index) {
         if (index < givens.size()) {
             // Add a Dimension for the current given variable
@@ -136,11 +117,7 @@ public class helpCpt {
         }
     }
 
-    /**
-     * Stores the given probability in this CPT for the combination
-     * values for variables repesented by the given Assignment.
-     * @throws NoSuchElementException if the values don't represent a path to a ProbabilityValue.
-     */
+
     public void set(helper.Assignment e, String p) {
         ProbabilityValue pv = find(root, e);
         if (pv != null) {
@@ -150,12 +127,7 @@ public class helpCpt {
         }
     }
 
-    /**
-     * Returns the probability stored in this CPT for the combination
-     * of values for variables repesented by the given Assignment.
-     * @throws NoSuchElementException if the values don't represent a path to a ProbabilityValue.
-     * @return
-     */
+   
     public String get(helper.Assignment e) throws NoSuchElementException {
         ProbabilityValue pv = find(root, e);
         if (pv != null) {
@@ -165,28 +137,7 @@ public class helpCpt {
         }
     }
 
-    /**
-     * Returns a depth-first Iterator over the ProbabilityValues of this CPT
-     * (ie., over the terminal entries that contain the probability values).
-     * <p>
-     * This routine is entirely for populating a CPT from an XMLBIF
-     * representation of a Bayesian network. Specifically, it enumerates
-     * the given (conditioning) variables first, in the order they were
-     * added to the variable's domain (i.e., the order of the {@code outcome}
-     * elements in the XMLBIF {@code variable} element). It finishes by
-     * enumerating the possible values of the query variable. For example,
-     * suppose variable A has three values A1, A2, and A3, variable B has values
-     * B1 and B2, and variable C has four values C1, C2, C3, C4.
-     * The CPT for the conditional probability distribution P(A|B,C) would
-     * be enumerated as follows:
-     * <pre>
-     B1                                        B2
-     C1        C2        C3        C4          C1        C2        C3        C4
-     A1 A2 A3  A1 A2 A3  A1 A2 A3  A1 A2 A3    A1 A2 A3  A1 A2 A3  A1 A2 A3  A1 A2 A3
-     * </pre>
-     * This matches the ordering used in the XMLBIF {@code table} element
-     * inside a {@code definition} element.
-     */
+ 
     public Iterator<ProbabilityValue> valueIterator() {
         final Stack<Entry> stack = new Stack<Entry>();
         stack.push(root);
