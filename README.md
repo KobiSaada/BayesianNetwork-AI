@@ -16,13 +16,13 @@ Variable elimination (VE) is a simple and general exact inference algorithm in p
 <img width="1192" alt="Screen Shot 2021-12-07 at 21 55 59" src="https://user-images.githubusercontent.com/73976733/145097228-59ee020c-94a3-47c6-be61-26bd1d95197f.png">
 # Example: :page_facing_up:
 
- after you clone this project there is a class call Ex1 main run it in input.txt:
- 
+after you clone this project there is a class call Ex1 main run it in input.txt:
+
  input.txt:
  alarm_net.xml
- B-E|//Bayesball
+ B-E| # Bayesball
  B-E|J=T
- P(B=T|J=T,M=T) A-E//VE
+ P(B=T|J=T,M=T) A-E # VE
  P(B=T|J=T,M=T) E-A
  P(J=T|B=T) A-E-M
  P(J=T|B=T) M-E-A
