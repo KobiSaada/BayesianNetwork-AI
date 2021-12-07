@@ -21,13 +21,13 @@ after you clone this project there is a class call Ex1 main run it in input.txt:
 
 
         input.txt:
- alarm_net.xml
- B-E| # Bayesball
- B-E|J=T
- P(B=T|J=T,M=T) A-E # VE
- P(B=T|J=T,M=T) E-A
- P(J=T|B=T) A-E-M
- P(J=T|B=T) M-E-A
+        alarm_net.xml
+        B-E| # Bayesball
+        B-E|J=T
+        P(B=T|J=T,M=T) A-E # VE
+        P(B=T|J=T,M=T) E-A
+        P(J=T|B=T) A-E-M
+        P(J=T|B=T) M-E-A
 
 output:
 yes
